@@ -1,0 +1,6 @@
+{
+  "name": "प्लंबर वालेस | Plumber Wallah",
+  "description": "24/7 Emergency Plumbing & Repair Services — Rate us on Google or reach our team instantly via WhatsApp, phone, website, or Google Maps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

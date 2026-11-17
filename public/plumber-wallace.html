@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#081222" />
+  <title>Plumber Wallace — Reliable Plumbing Services at Your Doorstep</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', '"Noto Sans Devanagari"', 'sans-serif'],
+            sans: ['"DM Sans"', '"Noto Sans Devanagari"', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-[#040B16] text-slate-100 font-sans antialiased sm:py-6 sm:px-4 flex flex-col items-center justify-start">
+  <!-- Floating Toast Notification -->
+  <div id="copy-toast" role="status" aria-live="polite" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-[396px] rounded-2xl bg-emerald-950/95 border border-emerald-400/40 px-4 py-3.5 shadow-2xl backdrop-blur-md flex items-center justify-between gap-3">
+    <div class="flex items-center gap-2.5 min-w-0">
+      <svg class="w-5 h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span id="toast-message" class="text-xs sm:text-sm font-semibold text-emerald-100">Review Copied! Now just tap 'Paste' on Google</span>
+    </div>
+    <a id="toast-open-link" href="https://search.google.com/local/writereview?placeid=ChIJ1xX6xCxX7TkRdG63czwnwl4" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-amber-300 hover:text-amber-200 underline underline-offset-2 whitespace-nowrap shrink-0">Open Google</a>
+  </div>
+
+  <!-- Mobile-Centric Frame Container (max-w 420px on all screens) -->
+  <div class="w-full max-w-[420px] min-h-screen sm:min-h-0 flex flex-col bg-[#071120] bg-[radial-gradient(ellipse_at_top,_rgba(249,115,22,0.14)_0%,_rgba(14,32,61,0.6)_42%,_#071120_100%)] sm:rounded-[28px] sm:border sm:border-white/10 sm:shadow-[0_24px_80px_rgba(0,0,0,0.65)] overflow-hidden">
+    <main class="flex-1 w-full px-4 py-6 space-y-6">
+      <!-- 1. Custom Mid-Size Fixed Logo & Header Section -->
+      <section class="text-center flex flex-col items-center">
+        <div class="mb-4 w-32 h-32 sm:w-36 sm:h-36 rounded-3xl bg-[#0F213B] border-2 border-amber-400/75 ring-4 ring-amber-400/15 shadow-[0_14px_38px_rgba(245,158,11,0.2)] p-2.5 flex items-center justify-center overflow-hidden">
+          <img
+            src="https://static.wixstatic.com/media/0b58e2_9185adf5a99c48e6abc5e9cff8a1c9c0~mv2.png"
+            alt="Plumber Wallace official brand logo"
+            referrerpolicy="no-referrer"
+            class="w-full h-full object-contain rounded-2xl"
+          />
+        </div>
+
+        <h1 class="font-display text-3xl font-extrabold tracking-tight text-white">Plumber Wallace</h1>
+        <p id="ui-tagline" class="mt-1.5 text-sm text-slate-300">Reliable Plumbing Services at Your Doorstep</p>
+
+        <div class="mt-2.5 flex items-center justify-center gap-2 text-sm">
+          <div class="flex items-center gap-0.5 text-amber-400" aria-hidden="true">
+            <svg class="w-4 h-4 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-4 h-4 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="font-bold text-white tabular-nums">4.9</span>
+        </div>
+      </section>
+
+      <!-- 2. Dynamic Language-Based Non-Scrolling Service Tags Grid -->
+      <section aria-label="Services">
+        <div id="service-tags" class="flex flex-wrap justify-center gap-2"></div>
+      </section>
+
+      <!-- 3. Language Toggle Switcher -->
+      <section class="flex justify-center">
+        <div class="inline-flex p-1 rounded-xl bg-[#0F213B] border border-white/10">
+          <button type="button" id="lang-en" class="px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 transition-colors">ENGLISH</button>
+          <button type="button" id="lang-hi" class="px-4 py-2 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition-colors">हिंदी (HINDI)</button>
+        </div>
+      </section>
+
+      <!-- 4. Smart Review Box -->
+      <section class="rounded-2xl bg-[#0D1E38] border border-white/10 p-5 shadow-2xl shadow-black/35">
+        <div class="flex items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2.5">
+            <span id="ui-review-label" class="text-xs font-bold tracking-wider uppercase text-amber-400">YOUR REVIEW</span>
+            <span id="star-badge-score" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-300 text-xs font-bold tabular-nums">5.0 ★</span>
+          </div>
+          <button type="button" id="refresh-review-btn" aria-label="Generate another review" class="min-w-[40px] min-h-[40px] rounded-xl bg-[#152B4D] hover:bg-[#1B3761] border border-white/10 text-amber-400 inline-flex items-center justify-center transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+          </button>
+        </div>
+
+        <!-- Interactive Clickable 5-Star Rating -->
+        <div id="interactive-stars" class="flex items-center gap-1 mb-3.5" role="group" aria-label="Select star rating">
+          <button type="button" data-star="1" aria-label="Rate 1 star" class="star-btn min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg hover:bg-white/5 transition-transform active:scale-95">
+            <svg class="w-7 h-7 text-amber-400 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+          <button type="button" data-star="2" aria-label="Rate 2 stars" class="star-btn min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg hover:bg-white/5 transition-transform active:scale-95">
+            <svg class="w-7 h-7 text-amber-400 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+          <button type="button" data-star="3" aria-label="Rate 3 stars" class="star-btn min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg hover:bg-white/5 transition-transform active:scale-95">
+            <svg class="w-7 h-7 text-amber-400 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+          <button type="button" data-star="4" aria-label="Rate 4 stars" class="star-btn min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg hover:bg-white/5 transition-transform active:scale-95">
+            <svg class="w-7 h-7 text-amber-400 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+          <button type="button" data-star="5" aria-label="Rate 5 stars" class="star-btn min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg hover:bg-white/5 transition-transform active:scale-95">
+            <svg class="w-7 h-7 text-amber-400 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+        </div>
+
+        <textarea id="review-textarea" rows="5" class="w-full rounded-xl bg-[#081222] border border-white/10 p-3.5 text-sm text-slate-100 leading-relaxed focus:outline-none focus:border-amber-400 resize-none">Plumber Wallace provided excellent plumbing service. Very professional, punctual, and fixed the leakage instantly! Highly recommended.&#10;&#10;⭐⭐⭐⭐⭐ (5/5 Stars)</textarea>
+
+        <button
+          type="button"
+          id="copy-paste-btn"
+          class="mt-4 w-full min-h-[54px] px-5 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 hover:from-amber-300 hover:to-orange-400 active:scale-[0.98] text-slate-950 font-display font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all"
+        >
+          <span id="copy-btn-label">COPY &amp; PASTE ON GOOGLE</span>
+        </button>
+      </section>
+
+      <!-- 5. Quick Action Circular Icons Grid -->
+      <section class="rounded-2xl bg-[#0D1E38] border border-white/10 p-5">
+        <h3 id="quick-actions-title" class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4 text-center">Quick Contact &amp; Directions</h3>
+        <div class="grid grid-cols-5 gap-1.5 sm:gap-2 text-center">
+          <a href="tel:09798040975" class="group flex flex-col items-center gap-1.5">
+            <span class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#152B4D] border border-white/10 group-hover:border-orange-400/70 group-hover:bg-orange-500/15 group-active:scale-95 flex items-center justify-center text-orange-400 transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <span id="call-label" class="text-[11px] sm:text-xs font-medium text-slate-200 whitespace-nowrap">Call</span>
+          </a>
+          <a href="https://wa.me/9109798040975" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-1.5">
+            <span class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#152B4D] border border-white/10 group-hover:border-emerald-400/70 group-hover:bg-emerald-500/15 group-active:scale-95 flex items-center justify-center text-emerald-400 transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </span>
+            <span id="whatsapp-label" class="text-[11px] sm:text-xs font-medium text-slate-200 whitespace-nowrap">WhatsApp</span>
+          </a>
+          <a href="#" class="group flex flex-col items-center gap-1.5">
+            <span class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#152B4D] border border-white/10 group-hover:border-violet-400/70 group-hover:bg-violet-500/15 group-active:scale-95 flex items-center justify-center text-violet-400 transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </span>
+            <span id="website-label" class="text-[11px] sm:text-xs font-medium text-slate-200 whitespace-nowrap">Website</span>
+          </a>
+          <a href="https://maps.app.goo.gl/dwE5PcNKmdtwoz3N6" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-1.5">
+            <span class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#152B4D] border border-white/10 group-hover:border-amber-400/70 group-hover:bg-amber-500/15 group-active:scale-95 flex items-center justify-center text-amber-400 transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span id="maps-label" class="text-[11px] sm:text-xs font-medium text-slate-200 whitespace-nowrap">Maps</span>
+          </a>
+          <a href="https://search.google.com/local/writereview?placeid=ChIJ1xX6xCxX7TkRdG63czwnwl4" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-1.5">
+            <span class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#152B4D] border border-white/10 group-hover:border-sky-400/70 group-hover:bg-sky-500/15 group-active:scale-95 flex items-center justify-center text-sky-400 transition-all">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </span>
+            <span id="google-label" class="text-[11px] sm:text-xs font-medium text-slate-200 whitespace-nowrap">Google</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- 6. Professional Plumber Photo Card (Bottom Above Footer) -->
+      <section aria-label="Verified Service Technician" class="rounded-2xl bg-[#0D1E38] border border-white/10 overflow-hidden shadow-xl shadow-black/30">
+        <div class="relative h-56 bg-[#0B192E]">
+          <img
+            src="/plumber-technician.jpg"
+            alt="Smiling verified Plumber Wallace technician with professional plumbing tools"
+            referrerpolicy="no-referrer"
+            onerror="this.style.display='none';document.getElementById('tech-photo-fallback').classList.remove('hidden');"
+            class="w-full h-full object-cover object-top"
+          />
+          <div id="tech-photo-fallback" class="hidden w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#13294B] to-[#081222]">
+            <svg class="w-10 h-10 text-amber-400 mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <span class="font-display text-sm font-semibold text-white">Plumber Wallace</span>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F213B] via-[#0F213B]/25 to-transparent pointer-events-none"></div>
+          <div class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#081222]/85 border border-emerald-400/40 text-xs font-semibold text-emerald-300 backdrop-blur-md shadow-md">
+            <svg class="w-3.5 h-3.5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span id="verified-badge-label" class="tabular-nums">4.9 Verified Expert</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 id="tech-title" class="font-display text-base font-bold text-white">Plumber Wallace Service Team</h3>
+          <p class="mt-1 inline-flex items-center gap-1.5 text-xs text-slate-300">
+            <svg class="w-3.5 h-3.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span id="tech-location">Local Service Area · 24/7 Doorstep Plumbing Support</span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Clean Production Footer -->
+    <footer class="w-full border-t border-white/10 bg-[#070F1D] py-4 px-4 text-center text-xs text-slate-400">
+      &copy; 2026 Plumber Wallace. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const GOOGLE_DIRECT_REVIEW_URL = 'https://search.google.com/local/writereview?placeid=ChIJ1xX6xCxX7TkRdG63czwnwl4';
+
+    const SERVICE_OPTIONS = [
+      { id: 'Pipe Leakage Repair', en: 'Pipe Leakage Repair', hi: 'पाइप लीकेज सुधार' },
+      { id: 'Tap Fitting', en: 'Tap Fitting', hi: 'नल फिटिंग' },
+      { id: 'Emergency Plumber', en: 'Emergency Plumber', hi: 'इमरजेंसी प्लंबर' },
+      { id: 'Water Tank Cleaning', en: 'Water Tank Cleaning', hi: 'पानी टंकी सफाई' },
+      { id: 'Bathroom Fitting', en: 'Bathroom Fitting', hi: 'बाथरूम फिटिंग' },
+      { id: 'Fast Service', en: 'Fast Service', hi: 'फास्ट सर्विस' },
+    ];
+
+    const reviews = {
+      en: {
+        'Pipe Leakage Repair': [
+          'Plumber Wallace provided excellent plumbing service. Very professional, punctual, and fixed the leakage instantly! Highly recommended.',
+          'Had a hidden pipe leak fixed by Plumber Wallace today. Clean work, fair pricing, and zero mess left behind. Truly dependable!',
+        ],
+        'Tap Fitting': [
+          'Plumber Wallace installed our new kitchen and bathroom taps neatly without any leaks. Polite technician and great value!',
+          'Super clean tap fitting work by Plumber Wallace. Fast turnaround, proper tools, and transparent pricing. Five stars!',
+        ],
+        'Emergency Plumber': [
+          'Called Plumber Wallace for an urgent midnight pipe burst and they arrived fast! Calm, skilled, and saved us from water damage.',
+          'Best emergency plumbing response in the area. Plumber Wallace handled the shutoff and repair smoothly with honest rates.',
+        ],
+        'Water Tank Cleaning': [
+          'Booked Plumber Wallace for overhead water tank cleaning and valve check. Hygienic, thorough, and super punctual team!',
+          'Our water tank is spotless thanks to Plumber Wallace. They sanitized everything properly and checked the float valve too.',
+        ],
+        'Bathroom Fitting': [
+          'Plumber Wallace completed our bathroom fitting and shower installation with great precision. Everything works smoothly!',
+          'Clean workmanship on our bathroom fixtures and flush tank repair by Plumber Wallace. Neat finish and on-time service.',
+        ],
+        'Fast Service': [
+          'Plumber Wallace provided excellent plumbing service. Very professional, punctual, and fixed the issue quickly! Highly recommended.',
+          'Super fast service at our doorstep from Plumber Wallace. Booking was effortless and the repair was completed in one visit.',
+        ],
+      },
+      hi: {
+        'Pipe Leakage Repair': [
+          'Plumber Wallace ने पाइप लीकेज सुधार का काम बहुत ही सफाई और तेजी से किया। समय पर आए और काम बहुत बढ़िया रहा। सभी को सुझाव दूंगा!',
+          'बहुत ही भरोसेमंद और प्रोफेशनल प्लंबिंग सर्विस। Plumber Wallace ने बिना किसी तोड़फोड़ के लीकेज तुरंत बंद कर दी।',
+        ],
+        'Tap Fitting': [
+          'Plumber Wallace से नल फिटिंग और मिक्सर का काम करवाया। काम बहुत ही साफ-सुथरा और मजबूत है। वाजिब दाम और बढ़िया व्यवहार।',
+          'नल फिटिंग के लिए Plumber Wallace की सर्विस शानदार रही। समय पर आना और बढ़िया काम इनकी खासियत है।',
+        ],
+        'Emergency Plumber': [
+          'इमरजेंसी में Plumber Wallace को कॉल किया और वे बहुत जल्दी घर पहुंच गए। तुरंत रिपेयर करके बड़ा नुकसान बचा लिया। धन्यवाद!',
+          '24/7 इमरजेंसी प्लंबर सेवा के लिए Plumber Wallace सबसे बेहतरीन हैं। तेज रिस्पॉन्स और ईमानदार चार्ज।',
+        ],
+        'Water Tank Cleaning': [
+          'Plumber Wallace से पानी टंकी सफाई करवाई। पूरी टंकी बिल्कुल साफ और हाइजीनिक कर दी। बहुत ही मेहनती टीम!',
+          'पानी टंकी सफाई और वाल्व चेक के लिए Plumber Wallace की सर्विस नंबर 1 है। समय की पूरी पाबंदी और सही कीमत।',
+        ],
+        'Bathroom Fitting': [
+          'बाथरूम फिटिंग और शावर इंस्टॉलेशन का काम Plumber Wallace ने बहुत ही बारीकी और सफाई से किया। कोई लीकेज नहीं, बेहतरीन काम!',
+          'Plumber Wallace की बाथरूम फिटिंग सर्विस बहुत अच्छी रही। टाइल्स को बिना नुकसान पहुंचाए सारा काम परफेक्ट किया।',
+        ],
+        'Fast Service': [
+          'Plumber Wallace की फास्ट सर्विस बहुत तेज और भरोसेमंद है। कॉल करते ही समय पर पहुंचे और काम तुरंत पूरा किया। 5 स्टार!',
+          'घर बैठे सबसे तेज और किफायती प्लंबिंग सर्विस। Plumber Wallace का काम और व्यवहार दोनों बहुत बढ़िया हैं।',
+        ],
+      },
+    };
+
+    const uiText = {
+      en: {
+        tagline: 'Reliable Plumbing Services at Your Doorstep',
+        reviewLabel: 'YOUR REVIEW',
+        copyBtn: 'COPY & PASTE ON GOOGLE',
+        toast: "Review Copied! Now just tap 'Paste' on Google",
+        openGoogle: 'Open Google',
+        quickActions: 'Quick Contact & Directions',
+        call: 'Call',
+        whatsapp: 'WhatsApp',
+        website: 'Website',
+        maps: 'Maps',
+        google: 'Google',
+        verifiedBadge: '4.9 Verified Expert',
+        techTitle: 'Plumber Wallace Service Team',
+        techLocation: 'Local Service Area · 24/7 Doorstep Plumbing Support',
+      },
+      hi: {
+        tagline: 'आपके दरवाजे पर भरोसेमंद प्लंबिंग सेवा',
+        reviewLabel: 'आपकी समीक्षा',
+        copyBtn: 'कॉपी करें और GOOGLE पर पेस्ट करें',
+        toast: "रिव्यू कॉपी हो गया! अब Google पर 'Paste' दबाएं",
+        openGoogle: 'Google खोलें',
+        quickActions: 'त्वरित संपर्क और लोकेशन',
+        call: 'कॉल',
+        whatsapp: 'व्हाट्सएप',
+        website: 'वेबसाइट',
+        maps: 'मैप्स',
+        google: 'गूगल',
+        verifiedBadge: '4.9 सत्यापित विशेषज्ञ',
+        techTitle: 'Plumber Wallace सर्विस टीम',
+        techLocation: 'स्थानीय सेवा क्षेत्र · 24/7 होम प्लंबिंग सपोर्ट',
+      },
+    };
+
+    let currentLang = 'en';
+    let currentTag = 'Pipe Leakage Repair';
+    let currentStars = 5;
+    let currentIndex = 0;
+
+    const serviceTagsContainer = document.getElementById('service-tags');
+    const textarea = document.getElementById('review-textarea');
+    const refreshBtn = document.getElementById('refresh-review-btn');
+    const copyBtn = document.getElementById('copy-paste-btn');
+    const copyBtnLabel = document.getElementById('copy-btn-label');
+    const copyToast = document.getElementById('copy-toast');
+    const toastMessage = document.getElementById('toast-message');
+    const toastOpenLink = document.getElementById('toast-open-link');
+    const langEnBtn = document.getElementById('lang-en');
+    const langHiBtn = document.getElementById('lang-hi');
+    const taglineEl = document.getElementById('ui-tagline');
+    const reviewLabelEl = document.getElementById('ui-review-label');
+    const starBadgeScore = document.getElementById('star-badge-score');
+    const quickActionsTitle = document.getElementById('quick-actions-title');
+    const callLabel = document.getElementById('call-label');
+    const whatsappLabel = document.getElementById('whatsapp-label');
+    const websiteLabel = document.getElementById('website-label');
+    const mapsLabel = document.getElementById('maps-label');
+    const googleLabel = document.getElementById('google-label');
+    const verifiedBadgeLabel = document.getElementById('verified-badge-label');
+    const techTitle = document.getElementById('tech-title');
+    const techLocation = document.getElementById('tech-location');
+
+    function renderServiceTags() {
+      serviceTagsContainer.innerHTML = '';
+      SERVICE_OPTIONS.forEach((opt) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = opt[currentLang];
+        const isActive = opt.id === currentTag;
+        btn.className = isActive
+          ? 'service-tag px-3.5 py-2 rounded-full text-xs font-semibold border transition-colors whitespace-nowrap bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
+          : 'service-tag px-3.5 py-2 rounded-full text-xs font-semibold border transition-colors whitespace-nowrap bg-[#0F213B] text-slate-200 border-white/10 hover:border-amber-400/50';
+        btn.addEventListener('click', () => {
+          currentTag = opt.id;
+          currentIndex = 0;
+          renderServiceTags();
+          updateReviewText();
+        });
+        serviceTagsContainer.appendChild(btn);
+      });
+    }
+
+    function updateStarVisuals() {
+      starBadgeScore.textContent = currentStars.toFixed(1) + ' ★';
+      document.querySelectorAll('.star-btn').forEach((btn) => {
+        const val = Number(btn.getAttribute('data-star'));
+        const svg = btn.querySelector('svg');
+        svg.setAttribute(
+          'class',
+          val <= currentStars
+            ? 'w-7 h-7 text-amber-400 fill-amber-400'
+            : 'w-7 h-7 text-slate-600 fill-transparent'
+        );
+      });
+    }
+
+    function getActiveTagLabel() {
+      const found = SERVICE_OPTIONS.find((item) => item.id === currentTag);
+      return found ? found[currentLang] : currentTag;
+    }
+
+    function updateReviewText() {
+      const starCount = Math.max(1, Math.min(5, Math.round(currentStars)));
+      const starFooter = '⭐'.repeat(starCount) + ' (' + starCount + '/5 Stars)';
+      if (starCount >= 5) {
+        const list = reviews[currentLang][currentTag] || reviews.en['Pipe Leakage Repair'];
+        textarea.value = list[currentIndex % list.length] + '\n\n' + starFooter;
+      } else {
+        const label = getActiveTagLabel();
+        const prefix = currentLang === 'hi'
+          ? 'Plumber Wallace (' + label + '): '
+          : 'Used Plumber Wallace for ' + label.toLowerCase() + '. ';
+        const tail = currentLang === 'hi'
+          ? (starCount === 4 ? 'काम अच्छा और संतोषजनक रहा।' : 'सेवा का अनुभव साझा कर रहा हूँ।')
+          : (starCount === 4 ? 'Skilled technician, neat finish, and good overall service.' : 'Sharing honest feedback so the team can keep improving.');
+        textarea.value = prefix + tail + '\n\n' + starFooter;
+      }
+    }
+
+    function updateLanguageUI() {
+      const t = uiText[currentLang];
+      taglineEl.textContent = t.tagline;
+      reviewLabelEl.textContent = t.reviewLabel;
+      copyBtnLabel.textContent = t.copyBtn;
+      toastMessage.textContent = t.toast;
+      toastOpenLink.textContent = t.openGoogle;
+      quickActionsTitle.textContent = t.quickActions;
+      callLabel.textContent = t.call;
+      whatsappLabel.textContent = t.whatsapp;
+      websiteLabel.textContent = t.website;
+      mapsLabel.textContent = t.maps;
+      googleLabel.textContent = t.google;
+      verifiedBadgeLabel.textContent = t.verifiedBadge;
+      techTitle.textContent = t.techTitle;
+      techLocation.textContent = t.techLocation;
+
+      if (currentLang === 'en') {
+        langEnBtn.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 transition-colors';
+        langHiBtn.className = 'px-4 py-2 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition-colors';
+      } else {
+        langHiBtn.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 transition-colors';
+        langEnBtn.className = 'px-4 py-2 rounded-lg text-xs font-bold text-slate-300 hover:text-white transition-colors';
+      }
+
+      renderServiceTags();
+      updateReviewText();
+    }
+
+    function fallbackCopy(text) {
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      temp.setAttribute('readonly', '');
+      temp.style.position = 'fixed';
+      temp.style.top = '0';
+      temp.style.left = '-9999px';
+      temp.style.opacity = '0';
+      document.body.appendChild(temp);
+      temp.focus();
+      temp.select();
+      temp.setSelectionRange(0, temp.value.length);
+      let ok = false;
+      try {
+        ok = document.execCommand('copy');
+      } catch (err) {
+        ok = false;
+      }
+      document.body.removeChild(temp);
+      return ok;
+    }
+
+    function copyToClipboard(text) {
+      let copied = false;
+      const inIframe = window.self !== window.top;
+      if (inIframe || !navigator.clipboard || !navigator.clipboard.writeText) {
+        copied = fallbackCopy(text);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(function () {
+          if (!copied) fallbackCopy(text);
+        });
+      }
+    }
+
+    function fireCelebrationConfetti() {
+      if (typeof window.confetti === 'function') {
+        window.confetti({
+          particleCount: 95,
+          spread: 80,
+          origin: { y: 0.65 },
+          colors: ['#f59e0b', '#fb923c', '#22c55e', '#38bdf8', '#facc15'],
+          disableForReducedMotion: true,
+        });
+      }
+    }
+
+    function openTargetInNewTab(url) {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function handleCopyAndRedirectToGoogle() {
+      const starCount = Math.max(1, Math.min(5, Math.round(currentStars)));
+      const trimmed = textarea.value.trim().replace(/^⭐+\s*[-–—]?\s*/, '');
+      const starFooter = '⭐'.repeat(starCount) + ' (' + starCount + '/5 Stars)';
+      const hasTrailingStars = /⭐+\s*\(\d\/5 Stars\)\s*$/.test(trimmed);
+      const formattedReview = hasTrailingStars ? trimmed : trimmed + '\n\n' + starFooter;
+      copyToClipboard(formattedReview);
+      fireCelebrationConfetti();
+      copyToast.classList.remove('hidden');
+      setTimeout(() => {
+        openTargetInNewTab(GOOGLE_DIRECT_REVIEW_URL);
+      }, 700);
+      setTimeout(() => {
+        copyToast.classList.add('hidden');
+      }, 5000);
+    }
+
+    document.querySelectorAll('.star-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        currentStars = Number(btn.getAttribute('data-star')) || 5;
+        currentIndex = 0;
+        updateStarVisuals();
+        updateReviewText();
+      });
+    });
+
+    langEnBtn.addEventListener('click', () => {
+      currentLang = 'en';
+      currentIndex = 0;
+      updateLanguageUI();
+    });
+
+    langHiBtn.addEventListener('click', () => {
+      currentLang = 'hi';
+      currentIndex = 0;
+      updateLanguageUI();
+    });
+
+    refreshBtn.addEventListener('click', () => {
+      currentIndex += 1;
+      updateReviewText();
+    });
+
+    copyBtn.addEventListener('click', handleCopyAndRedirectToGoogle);
+
+    updateLanguageUI();
+  </script>
+</body>
+</html>
